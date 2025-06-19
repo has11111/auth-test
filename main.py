@@ -32,6 +32,7 @@ def auth():
 async def callback(request: Request):
     code = request.query_params.get("code")
     realm_id = request.query_params.get("realmId")
+    state = request.query_params.get("state")
 
     if not code:
         return {"error": "Authorization failed"}
@@ -55,9 +56,18 @@ async def callback(request: Request):
         return {"error": "Token exchange failed", "details": res.json()}
 
     tokens = res.json()
+    access_token = tokens.get("access_token")
+    refresh_token = tokens.get("refresh_token")
+
     with open("tokens.txt", "w") as f:
-        f.write(f"ACCESS_TOKEN={tokens['access_token']}\n")
-        f.write(f"REFRESH_TOKEN={tokens['refresh_token']}\n")
+        f.write(f"ACCESS_TOKEN={access_token}\n")
+        f.write(f"REFRESH_TOKEN={refresh_token}\n")
         f.write(f"REALM_ID={realm_id}\n")
 
-    return {"message": "✅ Tokens saved"}
+    # ✅ Print tokens to logs
+    print("✅ TOKENS:")
+    print(f"ACCESS_TOKEN={access_token}")
+    print(f"REFRESH_TOKEN={refresh_token}")
+    print(f"REALM_ID={realm_id}")
+
+    return {"message": "✅ Tokens saved and printed to logs"}
