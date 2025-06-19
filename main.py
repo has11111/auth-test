@@ -5,9 +5,9 @@ from urllib.parse import quote
 app = FastAPI()
 
 # Replace these with your Intuit Dev App credentials
-CLIENT_ID = "YOUR_DEV_CLIENT_ID"
-CLIENT_SECRET = "YOUR_DEV_CLIENT_SECRET"
-REDIRECT_URI = "https://qbo-oauth-dev-test.onrender.com/callback"  # will update later after Render deploy
+CLIENT_ID = "AB2XLkAsFCRNtv5j0tgw3AW8YjCXihixYgRcA6Bin0xzUrARht"
+CLIENT_SECRET = "3apWnY3bDko05GaOq5YQLqoWnZi3JR8wmbDOMjLR"
+REDIRECT_URI = "https://auth-test-e5ra.onrender.com/callback"  # will update later after Render deploy
 STATE = "test123"
 TOKEN_URL = "https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer"
 
