@@ -19,13 +19,13 @@ def home():
 def auth():
     scope = "com.intuit.quickbooks.accounting"
     auth_url = (
-        f"https://sandbox.appcenter.intuit.com/connect/oauth2"
-        f"?client_id={CLIENT_ID}"
-        f"&redirect_uri={quote(REDIRECT_URI)}"
-        f"&response_type=code"
-        f"&scope={quote(scope)}"
-        f"&state={STATE}"
-    )
+    f"https://appcenter.intuit.com/connect/oauth2"
+    f"?client_id={CLIENT_ID}"
+    f"&redirect_uri={quote(REDIRECT_URI)}"
+    f"&response_type=code"
+    f"&scope={quote(scope)}"
+    f"&state={STATE}"
+)
     return {"auth_url": auth_url}
 
 @app.get("/callback")
